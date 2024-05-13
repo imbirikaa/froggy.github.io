@@ -1,0 +1,144 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Game</title>
+  </head>
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+      font-family: Tahoma;
+    }
+    body {
+      width: 95%;
+      height: 97vh;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      flex-direction: column;
+      gap: 10px;
+    }
+
+    canvas {
+      scale: 1;
+      border-radius: 20px;
+      box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.9);
+      background-color: rgb(33, 31, 48);
+      position: absolute;
+    }
+    .cont {
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      width: 600px;
+      height: 400px;
+      background-color: rgb(214, 214, 214);
+      box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.9);
+      border-radius: 20px;
+      z-index: 9;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      flex-direction: column;
+      gap: 30px;
+    }
+    .title {
+      font-size: 40px;
+      font-weight: bold;
+      color: rgb(29, 100, 11);
+      text-align: center;
+    }
+    .ext {
+      font-size: 30px;
+      font-weight: bold;
+      color: rgb(13, 39, 6);
+      text-align: center;
+    }
+    .red {
+      color: rgb(212, 3, 3);
+    }
+    .green {
+      color: rgb(29, 100, 11);
+    }
+    .info {
+      font-size: 18px;
+      font-weight: 300px;
+      color: rgb(13, 39, 6);
+      text-align: center;
+    }
+    .hidden {
+      z-index: -1 !important;
+    }
+    .timer {
+      font-size: 30px;
+      font-weight: bold;
+      color: rgb(235, 235, 235);
+      text-align: center;
+      z-index: 9;
+      position: absolute;
+      top: 68%;
+      left: 67%;
+    }
+    .lives {
+      font-size: 30px;
+      font-weight: bold;
+      color: rgb(235, 235, 235);
+      text-align: center;
+      z-index: 9;
+      position: absolute;
+      top: 73%;
+      left: 67%;
+    }
+    .start {
+      border: 5px solid rgb(29, 100, 11);
+    }
+    .game-over {
+      border: 5px solid rgb(212, 3, 3);
+    }
+    .victory {
+      border: 5px solid rgb(29, 100, 11);
+    }
+  </style>
+  <body>
+    <div class="cont start">
+      <h1 class="title">Welcome to Froggy Game !</h1>
+      <h2 class="ext">Difficulty : <span class="red">HARD</span></h2>
+      <p class="info">
+        The controls are very SIMPLE : <br />
+        Press [A,D] To Move Left and Right <br />
+        Press [W] To Jump <br />
+        Press [R] To Restart <br />
+        <span class="red">NOT Recommended : </span>Press [X] To Cheat
+        (Deactivate the Spikes) <br />
+        Eat the KIWI to Gain 1 Life
+      </p>
+      <h2 class="ext">PRESS [M] TO <span class="green">START</span></h2>
+    </div>
+    <div class="cont game-over hidden">
+      <h1 class="title red">GAMEEEE OVEEERRRR !!!</h1>
+      <h2 class="ext">I Told You it's <span class="red">HARD</span></h2>
+      <h2 class="ext">PRESS [M] TO <span class="green">PLAY AGAIN</span></h2>
+    </div>
+    <div class="cont victory hidden">
+      <h1 class="title green">WE HAVE A <span class="check"></span></h1>
+      <h2>Your Time is : <span class="timing">00:00</span></h2>
+      <h2>Lives Used : <span class="liv">00:00</span></h2>
+      <h2 class="ext">PRESS [M] TO <span class="green">PLAY AGAIN</span></h2>
+    </div>
+    <h1 class="timer timing hidden">00:00</h1>
+    <h1 class="lives hidden">Lives : <span class="liv">0</span></h1>
+    <canvas></canvas>
+  </body>
+  <audio id="fruitSound" src="./sounds/fruit.wav"></audio>
+  <audio id="cheatSound" src="./sounds/cheat.wav"></audio>
+  <audio id="damageSound" src="./sounds/damage.wav"></audio>
+  <audio id="jumpSound" src="./sounds/jump.wav"></audio>
+  <audio id="endSound" src="./sounds/end.wav"></audio>
+  <audio id="winSound" src="./sounds/win.wav"></audio>
+  <audio id="bgSound" src="./sounds/backgroundMusic.mp3" loop></audio>
+</html>
+<script src="index.js"></script>
